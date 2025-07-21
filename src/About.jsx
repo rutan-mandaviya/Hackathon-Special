@@ -7,7 +7,7 @@ const About = () => {
   return (
     <>
    
-    <div className="  md:h-[80vh] relative   overflow-hidden">
+    <div className="  md:h-[80vh] relative mt-30    overflow-hidden">
       
       {/* Decorative background elements - toned down */}
       <div className="absolute inset-0 opacity-10">
@@ -19,7 +19,7 @@ const About = () => {
       <div className="relative z-10 min-h-screen flex flex-col lg:grid lg:grid-cols-12 lg:gap-6 p-4 lg:p-6">
         
         {/* Hero text section */}
-        <div className="lg:col-span-5 flex flex-col  space-y-6 order-2 lg:order-1 mt-6 lg:mt-0">
+        <div className="lg:col-span-5 flex flex-col px-2 md:px-10 space-y-6 order-2 lg:order-1 mt-6 lg:mt-0">
           <div className="space-y-4">
             <div className="inline-block">
               <span className="text-sm font-medium text-blue-400 bg-blue-100 px-4 py-2 rounded-full tracking-wider uppercase">

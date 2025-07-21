@@ -4,6 +4,8 @@ import LandingPage from './LandingPage';
 import Second from './Second';
 import Productpage from './Productpage';
 import About from './About';
+import Productdetailpage from './PerfumeListing';
+import PerfumeListing from './PerfumeListing';
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
 
     <LandingPage></LandingPage>
     <Second></Second>
+   <PerfumeListing></PerfumeListing>
     <Productpage></Productpage>
     <About></About>
     </div>

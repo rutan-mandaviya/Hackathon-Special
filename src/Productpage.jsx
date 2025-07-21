@@ -12,7 +12,7 @@ const Productpage = () => {
 
         </div>
         
-            <CircularGallery></CircularGallery>
+            {/* <CircularGallery></CircularGallery> */}
         
     </div>
   )
