@@ -7,7 +7,8 @@ import About from './About';
 
 function App() {
   return (
-    <div className="w-full  overflow-x-hidden ">
+   <div className="w-full bg-gradient-to-br from-blue-100 via-pink-100 to-blue-100 overflow-auto overflow-x-hidden">
+
     <LandingPage></LandingPage>
     <Second></Second>
     <Productpage></Productpage>

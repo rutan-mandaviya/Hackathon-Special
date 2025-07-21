@@ -451,11 +451,11 @@ class App {
 
 export default function CircularGallery({
   items,
-  bend = 0.2,
-  textColor = "#ffffff",
-  borderRadius = 0.01,
+  bend = 2,
+  textColor = "#f41a44",
+  borderRadius = 0.03,
   font = "bold 30px Figtree",
-  scrollSpeed = 1.2,
+  scrollSpeed = 3,
   scrollEase = 0.05,
 }) {
   const containerRef = useRef(null);
@@ -465,5 +465,10 @@ export default function CircularGallery({
       app.destroy();
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
-  return <div className="w-full h-full  overflow-hidden cursor-grab active:cursor-grabbing" ref={containerRef} />;
+  return <div
+  ref={containerRef}
+  style={{ willChange: "transform" }}
+  className="w-full h-full overflow-hidden cursor-grab active:cursor-grabbing"
+/>
+
 }
