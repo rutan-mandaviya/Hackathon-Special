@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <>
       {/* Hero Section - Modified for mobile but maintains laptop layout */}
-      <section className="relative w-full h-full my-6 md:my-14 flex items-center justify-center px-4 md:px-8">
+      <section className="relative w-full min:h-0 md:h-full  my-6 md:my-14 flex items-center justify-center px-4 md:px-8">
         <TextPressure />
         <div className="absolute">
           <img 
@@ -17,9 +17,9 @@ const Hero = () => {
       </section>
 
       {/* Product Options Section - Responsive modifications */}
-      <section className='px-4 md:px-[10%] flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6 font-[Gilroy]'>
+      <section className='px-4  md:px-[10%] flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6 font-[Gilroy]'>
         {/* Size Options */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 lg:gap-7">
+        <div className="flex  flex-wrap justify-center gap-3 md:gap-4 lg:gap-7">
           <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full text-center p-2 sm:p-3 lg:p-4 bg-gradient-to-br from-[#e0e8ff] to-[#d7d2f0] text-[#493eaeea] font-medium hover:scale-110 duration-300 flex items-center justify-center">
             <h1 className="text-[10px] xs:text-xs sm:text-sm lg:text-sm text-center leading-tight">Idôle Eau de Parfum</h1>
           </div>

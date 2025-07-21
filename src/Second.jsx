@@ -7,19 +7,19 @@ const perfumes = [
     id: '01',
     name: 'JASMIN',
     description: 'A radiant floral heart with fresh, luminous Jasmine blossoms...',
-    image: '/p1.png'
+    image: '/jasmine.webp'
   },
   {
     id: '02',
     name: 'ROSE',
     description: 'The Damask Rose—velvety, bold, and unmistakably luxurious...',
-    image: '/p2.webp'
+    image: '/roses.webp'
   },
   {
     id: '03',
     name: 'CHYPRE',
     description: 'A classic woody-mossy base reimagined with elegance...',
-    image: '/p3.webp'
+    image: '/chypre.webp'
   }
 ]
 
@@ -92,7 +92,7 @@ const Second = () => {
                 <AnimatePresence>
                   {hovered === id && (
                     <motion.div
-                      className="absolute -top-10 right-0 md:right-70 mt-2 w-40 h-40 rounded-lg overflow-hidden shadow-lg border border-pink-300 bg-white z-50"
+                      className="absolute -top-10 right-0 md:right-0 mt-2 w-40 h-40 rounded-full overflow-hidden  border border-pink-300  z-50"
                       style={{ boxShadow: '0 8px 16px rgba(197, 130, 148, 0.6)' }}
                       initial="initial"
                       animate="animate"
