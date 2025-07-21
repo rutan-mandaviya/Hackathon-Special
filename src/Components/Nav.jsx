@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'; // <-- ✅ React Router Link
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(8);
+  const [cartCount, setCartCount] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

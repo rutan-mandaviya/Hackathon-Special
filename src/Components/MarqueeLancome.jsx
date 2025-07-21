@@ -1,48 +1,39 @@
 import React from "react";
 
 const marqueeContent = [
-    "Nykaa ",
+  "Nykaa",
   "Amazon",
   "Tata CLiQ",
   "Myntra",
   "Sephora",
   "Flipkart",
-    "Nykaa ",
-  "Amazon",
- 
+  "Nykaa",
+  "Amazon"
 ];
 
 const MarqueeLancome = () => (
-  <div className="w-full overflow-hidden  border-y-2 border-blue-50 py-2 md:py-3">
+  <div className="w-full overflow-hidden bg-gradient-to-r from-pink-50 via-blue-50 to-pink-50 py-3  mt-10 border-y border-blue-100 shadow-sm">
     <style>
       {`
-        @keyframes marquee-inline {
+        @keyframes minimal-marquee {
           0% { transform: translateX(0%); }
-          100% { transform: translateX(-100%); }
+          100% { transform: translateX(-50%); }
         }
-        .animate-marquee-inline {
-          animation: marquee-inline 15s linear infinite ;
+        .animate-minimal-marquee {
+          display: flex;
+          animation: minimal-marquee 22s linear infinite;
         }
       `}
     </style>
-    <div className="relative flex justify-between items-center w-full">
-      <div className="flex whitespace-nowrap animate-marquee-inline">
-        {marqueeContent.map((item, idx) => (
+    <div className="relative flex items-center w-full h-10">
+      <div className="animate-minimal-marquee whitespace-nowrap">
+        {[...marqueeContent, ...marqueeContent].map((item, idx) => (
           <span
-            className="font-serif text-sm md:text-xl text-[#a77b6d] mx-3 md:mx-18 tracking-wide"
             key={idx}
+            className="font-serif text-base md:text-lg text-[#b8917f] mx-6 tracking-wide"
           >
             {item}
-          </span>
-        ))}
-      </div>
-      <div className="flex whitespace-nowrap animate-marquee-inline  ">
-        {marqueeContent.map((item, idx) => (
-          <span
-            className="font-serif text-sm md:text-xl text-[#a77b6d] px-3 md:px-18 tracking-wide"
-            key={idx}
-          >
-            {item}
+            <span className="mx-10 text-gray-300 text-lg align-middle select-none">•</span>
           </span>
         ))}
       </div>
