@@ -1,21 +1,84 @@
-// App.js
-import React from 'react';
-import LandingPage from './LandingPage';
-import Second from './Second';
-import Productpage from './Productpage';
-import About from './About';
-import Productdetailpage from './PerfumeListing';
-import PerfumeListing from './PerfumeListing';
+import React, { useEffect, useState, Suspense } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Lenis from '@studio-freight/lenis';
+
+// Lazy-load page sections for performance
+const LandingPage = React.lazy(() => import('./LandingPage'));
+const Second = React.lazy(() => import('./Second'));
+const Productpage = React.lazy(() => import('./Productpage'));
+const About = React.lazy(() => import('./About'));
+const PerfumeListing = React.lazy(() => import('./PerfumeListing'));
+const Nav = React.lazy(() => import('./Components/Nav'));
+const Loader = React.lazy(() => import('./Components/Loader'));
 
 function App() {
-  return (
-   <div className="w-full bg-gradient-to-br from-blue-100 via-pink-100 to-blue-100 overflow-auto overflow-x-hidden">
+  // 🌟 Lenis Smooth Scroll Initialization
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.1,
+      smooth: true,
+      lerp: 0.1,
+      gestureDirection: 'vertical',
+      smoothTouch: true,
+      direction: 'vertical',
+    });
 
-    <LandingPage></LandingPage>
-    <Second></Second>
-   <PerfumeListing></PerfumeListing>
-    <Productpage></Productpage>
-    <About></About>
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
+  }, []);
+
+  // 🌟 Page-level loader (show only during initial load)
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+  if (isLoading) return <Loader />;
+
+  // 🌟 Conditional Navbar (hide on home '/')
+  const location = useLocation();
+  const hideNavOnRoutes = ['/'];
+  const shouldShowNav = !hideNavOnRoutes.includes(location.pathname);
+
+  return (
+    <div className="w-full bg-gradient-to-br from-blue-100 via-pink-100 to-blue-100 overflow-x-hidden">
+      <Suspense fallback={<Loader />}>
+        {shouldShowNav && <Nav />}
+
+        <Routes>
+          {/* Homepage: includes sections with IDs */}
+          <Route
+            path="/"
+            element={
+              <>
+                <LandingPage />
+                <Second />
+                <div id="perfumes">
+                  <PerfumeListing />
+                </div>
+                <div id="login">
+                  <Productpage />
+                </div>
+                <div id="about">
+                  <About />
+                </div>
+              </>
+            }
+          />
+
+          {/* Other routes: lazy loaded individually */}
+          <Route path="/perfumes" element={<PerfumeListing />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Productpage />} />
+          {/* Add detailed route later if needed */}
+        </Routes>
+      </Suspense>
     </div>
   );
 }

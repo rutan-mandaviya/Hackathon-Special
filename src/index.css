@@ -3,5 +3,7 @@
 
 head,body{
   font-family: 'Gilroy';
+  scroll-behavior: smooth;
   /* overflow-x: hidden; */
 }
+

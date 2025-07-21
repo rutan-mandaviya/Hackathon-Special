@@ -7,7 +7,7 @@ const About = () => {
   return (
     <>
    
-    <div className="  md:h-[80vh] relative mt-30    overflow-hidden">
+    <div className="  md:h-[80vh] relative mt-4   overflow-hidden">
       
       {/* Decorative background elements - toned down */}
       <div className="absolute inset-0 opacity-10">
