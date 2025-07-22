@@ -9,7 +9,7 @@ const Context = (props) => {
   {
     id: 1,
     name: "Idôle Eau de Parfum",
-    images: ["/p7.jpg", "/p2.webp"],
+    images: ["/p7.png", "/p2.png"],
     price: 69,
     sizes: [
       { value: "50ml", label: "1.7 FL.OZ (50 ML)" },
@@ -40,7 +40,7 @@ const Context = (props) => {
   {
     id: 2,
     name: "Idôle L’Intense",
-    images: ["/p9.jpg", "/p9h.png"],
+    images: ["/p9.png", "/p9h.png"],
     price: 69,
     sizes: [
       { value: "50ml", label: "1.7 FL.OZ (50 ML)" },
@@ -71,7 +71,7 @@ const Context = (props) => {
   {
     id: 3,
     name: "Idôle Aura",
-    images: ["/p5.jpg", "/p5h.png"],
+    images: ["/p5.png", "/p5h.png"],
     price: 69,
     sizes: [
       { value: "50ml", label: "1.7 FL.OZ (50 ML)" },
@@ -102,7 +102,7 @@ const Context = (props) => {
   {
     id: 4,
     name: "Idôle Nectar",
-    images: ["/p4.webp", "/p4h.png"],
+    images: ["/p4.png", "/p4h.png"],
     price: 69,
     sizes: [
       { value: "50ml", label: "1.7 FL.OZ (50 ML)" },
@@ -161,8 +161,39 @@ const Context = (props) => {
       }
     ]
   },
-  {
+   {
     id: 6,
+    name: "Idôle Eau de Toilette",
+    images: ["/p3.png", "/p3h.png"],
+    price: 69,
+    sizes: [
+      { value: "50ml", label: "1.7 FL.OZ (50 ML)" },
+      { value: "75ml", label: "2.5 FL.OZ (75 ML)" }
+    ],
+    description:
+      "Fresh, sparkling, and clean. This Eau de Toilette revives the Idôle signature with airy citrus and delicate florals.",
+    likes: 11,
+    brand: "LANCOME",
+    ingredients: [
+      {
+        image: "/roses.webp",
+        title: "FOUR ROSES",
+        desc: "Rose—a new area, sustainably sourced and tailor-made for this."
+      },
+      {
+        image: "/jasmine.webp",
+        title: "JASMINE",
+        desc: "Spotless jasmine enhances the scent’s naturalness."
+      },
+      {
+        image: "/chypre.webp",
+        title: "CHYPRE ACCORD",
+        desc: "Elegant chypre brings a unique, comforting feel."
+      }
+    ]
+  },
+  {
+    id: 7,
     name: "Idôle Eau de Toilette",
     images: ["/p6.png", "/p6h.png"],
     price: 69,
@@ -193,9 +224,9 @@ const Context = (props) => {
     ]
   },
   {
-    id: 7,
+    id: 8,
     name: "Idôle Edition Fleur",
-    images: ["/p8.webp", "/p8h.png"],
+    images: ["/p8.png", "/p8h.png"],
     price: 69,
     sizes: [
       { value: "50ml", label: "1.7 FL.OZ (50 ML)" },
@@ -224,7 +255,7 @@ const Context = (props) => {
     ]
   },
   {
-    id: 8,
+    id: 9,
     name: "Idôle Eau Privée",
     images: ["/p10.png", "/p10h.png"],
     price: 69,
@@ -255,7 +286,7 @@ const Context = (props) => {
     ]
   },
   {
-    id: 9,
+    id: 10,
     name: "Idôle Collection Gift Set",
     images: ["/p11.png", "/p11h.png"],
     price: 69,

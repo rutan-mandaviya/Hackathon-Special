@@ -1,9 +1,11 @@
-import React, { useEffect, useState, Suspense } from 'react';
+// App.jsx
+import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis';
 import Productdetailpage from './Components/Productdetailpage';
+import LoginPage from './Components/LoginPage';
+import MarqueeLancome from './Components/MarqueeLancome';
 
-// Lazy-load page sections for performance
 const LandingPage = React.lazy(() => import('./LandingPage'));
 const Second = React.lazy(() => import('./Second'));
 const Productpage = React.lazy(() => import('./Productpage'));
@@ -13,47 +15,52 @@ const Nav = React.lazy(() => import('./Components/Nav'));
 const Loader = React.lazy(() => import('./Components/Loader'));
 
 function App() {
-  // 🌟 Lenis Smooth Scroll Initialization
+  const location = useLocation();
+  const lenisRef = useRef(null);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  // ✅ Smooth scroll initialization (Lenis)
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.1,
-      smooth: true,
-      lerp: 0.1,
-      gestureDirection: 'vertical',
+    lenisRef.current = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothTouch: true,
-      direction: 'vertical',
+      touchMultiplier: 1.5,
     });
 
-    function raf(time) {
-      lenis.raf(time);
+    const raf = (time) => {
+      lenisRef.current.raf(time);
       requestAnimationFrame(raf);
-    }
+    };
 
     requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => lenisRef.current.destroy();
   }, []);
 
-  // 🌟 Page-level loader (show only during initial load)
-  const [isLoading, setIsLoading] = useState(true);
+  // ✅ Scroll to top on route change
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1200);
-    return () => clearTimeout(timer);
-  }, []);
-  if (isLoading) return <Loader />;
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { duration: 0.7 });
+    }
+  }, [location]);
 
-  // 🌟 Conditional Navbar (hide on home '/')
-  const location = useLocation();
-  const hideNavOnRoutes = ['/'];
-  const shouldShowNav = !hideNavOnRoutes.includes(location.pathname);
+  // ✅ Initial loader only (runs once)
+  if (isLoading) {
+    return (
+      <Suspense fallback={<div className="fixed inset-0 bg-white z-50"></div>}>
+        <Loader onComplete={() => setIsLoading(false)} />
+      </Suspense>
+    );
+  }
 
   return (
-    <div className="w-full bg-gradient-to-br from-blue-100 via-pink-100 to-blue-100 overflow-x-hidden">
-      <Suspense fallback={<Loader />}>
-        {shouldShowNav && <Nav />}
+    <div className="w-full bg-gradient-to-br from-blue-50 via-pink-50 to-blue-50 min-h-screen">
+      <Suspense fallback={<div className="fixed inset-0 bg-white z-50" />}>
+        {!isLoading && <Nav />}
 
-        <Routes>
-          {/* Homepage: includes sections with IDs */}
+        <Routes location={location} key={location.pathname}>
           <Route
             path="/"
             element={
@@ -63,8 +70,9 @@ function App() {
                 <div id="perfumes">
                   <PerfumeListing />
                 </div>
-                <div id="login">
+                <div id="products">
                   <Productpage />
+                  <MarqueeLancome />
                 </div>
                 <div id="about">
                   <About />
@@ -72,12 +80,9 @@ function App() {
               </>
             }
           />
-
-          {/* Other routes: lazy loaded individually */}
           <Route path="/perfumes" element={<PerfumeListing />} />
           <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Productpage />} />
-          {/* Add detailed route later if needed */}
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/perfumes/:id" element={<Productdetailpage />} />
         </Routes>
       </Suspense>

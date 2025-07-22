@@ -45,57 +45,77 @@ const About = () => {
   }, [])
 
   return (
+
     <>
-      <div className="md:h-[80vh] relative mt-4 overflow-hidden">
+   
+      <div className="min:h-0   relative ">
         {/* Decorative background blobs */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 ">
           <div
             ref={bgBlob1}
-            className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-gray-300 to-stone-400 rounded-full blur-3xl"
+            className="absolute top-10 right-10 w-32 h-32 bg-gradient-to-br from-[#f3e9e1] to-[#e8d9cf] rounded-full blur-3xl"
           ></div>
           <div
             ref={bgBlob2}
-            className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-br from-neutral-300 to-gray-300 rounded-full blur-3xl"
+            className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-br from-[#f0e6e0] to-[#e5d6cc] rounded-full blur-3xl"
           ></div>
         </div>
 
         {/* Main content grid */}
-        <div className="relative z-10 min-h-screen flex flex-col lg:grid lg:grid-cols-12 lg:gap-6 p-4 lg:p-6">
+        <div className="relative z-10 min-h-screen flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 p-6 lg:p-8 xl:p-12">
           {/* Text Column */}
-          <div className="lg:col-span-5 flex flex-col px-2 md:px-10 space-y-6 order-2 lg:order-1 mt-6 lg:mt-0">
-            <div className="space-y-4">
-              <span className="text-sm font-medium bg-blue-50 text-blue-600 px-4 py-2 rounded-full tracking-wider uppercase inline-block">
-                French Heritage
+          <div className="lg:col-span-5 flex flex-col px-2 md:px-6 lg:px-8 space-y-8 order-2 lg:order-1 mt-8 lg:mt-0">
+            <div className="space-y-6">
+              <span 
+                className="text-xs font-medium tracking-[0.3em] text-[#b8917f] uppercase inline-block"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                FRENCH HERITAGE
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 leading-tight">
+              <h1 
+                className="text-4xl md:text-5xl lg:text-6xl font-light text-[#5a4a42] leading-tight"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
                 About
-                <span className="block font-semibold bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent">
+                <span className="block font-normal italic text-[#8a6e5d]">
                   Lancôme
                 </span>
               </h1>
-              <div className="w-16 h-1 bg-gray-200 rounded-full"></div>
+              <div className="w-24 h-0.5 bg-[#d4af37] rounded-full"></div>
             </div>
 
-            <div className="space-y-6 text-gray-700 leading-relaxed">
+            <div 
+              className="space-y-6 text-[#5a4a42] leading-relaxed"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
               <p className="text-lg md:text-xl font-light">
-                At <strong className="text-gray-800">Lancôme</strong>, fragrance transcends the ordinary — it becomes a{' '}
-                <em className="text-gray-500">symphony of emotion, elegance, and empowerment</em>.
+                At <strong className="font-medium">Lancôme</strong>, fragrance transcends the ordinary — it becomes a{' '}
+                <em className="italic">symphony of emotion, elegance, and empowerment</em>.
               </p>
               <p className="text-base md:text-lg">
                 We masterfully blend timeless French luxury with contemporary sophistication, creating{' '}
-                <span className="font-semibold text-gray-800">unforgettable experiences</span>.
+                <span className="font-medium">unforgettable experiences</span>.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <div className="flex items-center space-x-2 text-sm text-gray-500">
-                  <div className="w-2 h-2 bg-blue-100 rounded-full"></div>
+                <div className="flex items-center space-x-2 text-sm text-[#b8917f]">
+                  <div 
+                    className="w-2 h-2 bg-[#d4af37] rounded-full animate-pulse"
+                    style={{ boxShadow: '0 0 8px rgba(212, 175, 55, 0.5)' }}
+                  ></div>
                   <span>Since 1935</span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-500">
-                  <div className="w-2 h-2 bg-pink-100 rounded-full"></div>
+                <div className="flex items-center space-x-2 text-sm text-[#b8917f]">
+                  <div 
+                    className="w-2 h-2 bg-[#d4af37] rounded-full animate-pulse delay-300"
+                    style={{ boxShadow: '0 0 8px rgba(212, 175, 55, 0.5)' }}
+                  ></div>
                   <span>Parisian Elegance</span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-gray-500">
-                  <div className="w-2 h-2 bg-violet-100 rounded-full"></div>
+                <div className="flex items-center space-x-2 text-sm text-[#b8917f]">
+                  <div 
+                    className="w-2 h-2 bg-[#d4af37] rounded-full animate-pulse delay-700"
+                    style={{ boxShadow: '0 0 8px rgba(212, 175, 55, 0.5)' }}
+                  ></div>
                   <span>Luxury Craftsmanship</span>
                 </div>
               </div>
@@ -103,10 +123,10 @@ const About = () => {
           </div>
 
           {/* Media Column (Video + Floating Images) */}
-          <div className="lg:col-span-7 relative order-1 lg:order-2 h-80 lg:h-[70vh] min-h-[400px]">
+          <div className="lg:col-span-7 relative order-1 lg:order-2 h-80 sm:h-[50vh] lg:h-[70vh] min-h-[400px]">
             {/* Video Area */}
-            <div className="absolute inset-2 lg:inset-4 z-20">
-              <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-[0_6px_32px_0_rgba(44,62,80,0.21)] border-2 border-zinc-200 bg-white/20">
+            <div className="absolute inset-4 lg:inset-6 xl:inset-8 z-20">
+              <div className="relative w-full h-full rounded-xl overflow-hidden shadow-[0_15px_40px_0_rgba(44,62,80,0.15)] border border-white/30 bg-white/10 backdrop-blur-sm">
                 <video
                   src="/vid.mp4"
                   autoPlay
@@ -116,54 +136,59 @@ const About = () => {
                   preload="metadata"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/20 to-black/20"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent"></div>
               </div>
             </div>
 
             {/* Floating Images */}
             <div
               ref={topImg}
-              className="absolute top-5 right-5 w-20 h-28 md:w-28 md:h-36 lg:w-36 lg:h-44 z-30"
+              className="absolute top-6 right-6 w-24 h-32 md:w-32 md:h-40 lg:w-40 lg:h-48 z-30"
             >
               <img
                 src="/ads.webp"
                 alt="Lancôme fragrance collection"
                 loading="lazy"
-                className="w-full  h-full object-cover rounded-xl hover:scale-125 shadow-lg border-2 border-white transform rotate-0 hover:-rotate-4 transition-transform duration-300"
+                className="w-full h-full object-cover rounded-lg hover:scale-110 shadow-lg border border-white/50 transform rotate-0 hover:-rotate-3 transition-all duration-500 ease-out"
+                style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.15)' }}
               />
             </div>
 
             <div
               ref={bottomImg}
-              className="absolute bottom-5 left-5 w-20 h-28 md:w-28 md:h-36 lg:w-36 lg:h-44 z-30"
+              className="absolute bottom-6 left-6 w-24 h-32 md:w-32 md:h-40 lg:w-40 lg:h-48 z-30"
             >
               <img
                 src="/ads2.jpg"
                 alt="Lancôme premium bottles"
                 loading="lazy"
-                className="w-full h-full hidden md:block object-cover rounded-xl hover:scale-125 shadow-lg border-2 border-white transform rotate-0 hover:rotate-2 transition-transform duration-300"
+                className="w-full h-full object-cover rounded-lg hover:scale-110 shadow-lg border border-white/50 transform rotate-0 hover:rotate-2 transition-all duration-500 ease-out"
+                style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.15)' }}
               />
             </div>
 
             {/* Floating Decorative Dots */}
             <div
               ref={dot1}
-              className="absolute top-1/4 left-1/4 w-2 h-2 bg-gray-400 rounded-full opacity-40 animate-pulse"
+              className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#d4af37] rounded-full opacity-60 animate-pulse"
+              style={{ boxShadow: '0 0 12px rgba(212, 175, 55, 0.7)' }}
             ></div>
             <div
               ref={dot2}
-              className="absolute bottom-1/3 right-1/4 w-1.5 h-1.5 bg-stone-400 rounded-full opacity-30 animate-pulse delay-1000"
+              className="absolute bottom-1/3 right-1/4 w-2 h-2 bg-[#d4af37] rounded-full opacity-50 animate-pulse delay-1000"
+              style={{ boxShadow: '0 0 12px rgba(212, 175, 55, 0.7)' }}
             ></div>
             <div
               ref={dot3}
-              className="absolute top-2/3 right-1/3 w-2.5 h-2.5 bg-neutral-400 rounded-full opacity-20 animate-pulse delay-2000"
+              className="absolute top-2/3 right-1/3 w-2.5 h-2.5 bg-[#d4af37] rounded-full opacity-40 animate-pulse delay-2000"
+              style={{ boxShadow: '0 0 15px rgba(212, 175, 55, 0.7)' }}
             ></div>
           </div>
         </div>
       </div>
 
       {/* Footer Marquee */}
-      <MarqueeLancome />
+      
     </>
   )
 }
