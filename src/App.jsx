@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis';
+import Productdetailpage from './Components/Productdetailpage';
 
 // Lazy-load page sections for performance
 const LandingPage = React.lazy(() => import('./LandingPage'));
@@ -77,6 +78,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Productpage />} />
           {/* Add detailed route later if needed */}
+          <Route path="/perfumes/:id" element={<Productdetailpage />} />
         </Routes>
       </Suspense>
     </div>

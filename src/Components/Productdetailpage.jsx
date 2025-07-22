@@ -1,0 +1,138 @@
+import React, { useContext, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Thumbs } from "swiper/modules";
+import IconicIngredientsSection from "./IconicIngredientsSection";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { ProductContext } from "../utils/Context";
+
+
+
+export default function ProductDetailPage() {
+    const [products,setproudts]=useContext(ProductContext);
+  const { id } = useParams();
+  const product = products.find((p) => Number(p.id) === Number(id));
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center text-gray-600 bg-white">
+        <h1 className="text-2xl mb-4">Product Not Found</h1>
+        <Link to="/" className="text-pink-600 underline text-sm">
+          Go back home
+        </Link>
+      </div>
+    );
+  }
+
+  const carouselImages = product.images || ["/dummy.jpg"];
+  const sizes = product.sizes || defaultSizes;
+  const description = product.description || defaultDescription;
+
+  return (
+    <div className="w-full min-h-screen bg-[url('/background.webp')] bg-cover bg-fixed bg-center overflow-auto">
+      {/* ----- Product Details Container ----- */}
+      <div className="flex flex-col md:flex-row max-w-8xl w-full mx-auto px-4 md:px-6 py-10 rounded-3xl border-zinc-100 overflow-hidden   ">
+
+        {/* Images & Carousel Section */}
+        <div className="w-full md:w-[65%] flex flex-col md:flex-row gap-5 items-center p-2 md:p-5">
+          <div className="hidden md:block mb-3">
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              direction="vertical"
+              slidesPerView={carouselImages.length < 3 ? carouselImages.length : 3}
+              spaceBetween={12}
+              modules={[Thumbs]}
+              style={{ height: "300px" }}
+              className="rounded"
+            >
+              {carouselImages.map((img, idx) => (
+                <SwiperSlide key={idx}>
+                  <img src={img} alt="" className="w-24 h-24 object-cover border rounded-md cursor-pointer mix-blend-multiply" />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          <div className="flex-1 w-full flex justify-center    ">
+            <Swiper
+              modules={[Navigation, Thumbs]}
+              navigation
+              thumbs={{ swiper: thumbsSwiper }}
+              className="rounded-lg"
+              style={{  maxWidth: "650px", height: "450px" }}
+            >
+              {carouselImages.map((img, idx) => (
+                <SwiperSlide key={idx}>
+                  <img src={img} alt="" className="w-2/3 mx-auto md:w-full h-full object-contain mix-blend-multiply" />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+
+        {/* Product Info Section */}
+        <div className="w-full md:w-[40%] p-4 md:p-10 flex flex-col justify-center">
+          <span className="uppercase text-xs font-medium tracking-widest text-gray-500 mb-1">
+            {product.brand || "FRAGRANCE"}
+          </span>
+          <h2 className="font-semibold text-lg md:text-2xl text-gray-700 mb-3">
+            {product.name}
+          </h2>
+          <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+            <span>{product.likes || 0} Likes</span>
+          </div>
+          <div className="flex items-end gap-3 mb-4">
+            <span className="text-2xl font-bold text-gray-800">${product.price.toFixed(2)}</span>
+            <span className="text-gray-400 line-through">
+              ${(product.price * 1.1).toFixed(2)}
+            </span>
+            <span className="text-green-500 font-medium">Save 10%</span>
+          </div>
+
+          {/* Sizes */}
+          <div className="mb-4">
+            <div className="text-sm text-gray-700 font-medium mb-1">Available size</div>
+            <select className="rounded border px-4 py-1 bg-white text-gray-700 w-full max-w-xs">
+              {sizes.map((s, idx) => (
+                <option value={s.value} key={idx}>{s.label}</option>
+              ))}
+            </select>
+          </div>
+
+          <p className="mb-4 text-gray-700">{description}</p>
+
+          <div className="flex flex-col sm:flex-row gap-2 mb-4">
+            <button className="bg-gray-900 text-white px-6 py-2 rounded-full font-semibold shadow hover:bg-gray-800 transition">
+              Add to Cart
+            </button>
+            <button className="border border-gray-300 px-6 py-2 rounded-full font-semibold shadow hover:bg-gray-50 transition">
+              Wishlist
+            </button>
+          </div>
+
+          <button className="w-1/2 md:w-full mb-4 px-5 bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-full py-3 transition">
+            Buy Now
+          </button>
+
+          {/* Delivery / Pincode */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-2">
+            <input className="border px-4 py-2 rounded focus:outline-none focus:border-pink-400 w-full sm:w-auto" placeholder="Pin code" />
+            <button className="bg-gray-900 text-white px-5 py-2 rounded hover:bg-gray-800">Check</button>
+          </div>
+          <p className="text-xs text-gray-500">Cash on delivery available</p>
+
+          <Link to="/perfumes" className="text-sm text-pink-700 underline mt-8 block hover:text-pink-500">
+            ← Back to all perfumes
+          </Link>
+        </div>
+      </div>
+
+      {/* ---------- ICONIC INGREDIENTS SECTION BELOW ----------- */}
+      <IconicIngredientsSection ingredients={product.ingredients} />
+    </div>
+  );
+}
