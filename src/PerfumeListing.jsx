@@ -59,7 +59,7 @@ export default function PerfumeListing() {
   }, [products]);
 
   return (
-    <div className="w-full px-4 md:px-20 py-4 mb-20">
+    <div className="w-full px-4 md:px-20 py-4  ">
      <h1 className="text-center text-3xl md:text-5xl mb-3 font-[400] tracking-wider text-gray-800 uppercase" style={{ fontFamily: "'Goudy Old Style', 'Times New Roman', serif" }}>
   Our Fragrance Collection
 </h1>
