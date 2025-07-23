@@ -30,7 +30,7 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img
             ref={bottleRef}
-            className="h-[20vh] xs:h-[25vh] md:h-[70vh] max-w-full mix-blend-multiply object-contain"
+            className="h-[20vh] xs:h-[25vh] select-none md:h-[70vh] max-w-full  mix-blend-multiply object-contain"
             src="/perfume.webp"
             alt="Lancôme Perfume"
             style={{ transition: 'transform 0.1s linear' }}

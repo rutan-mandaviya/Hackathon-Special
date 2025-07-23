@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 const TextPressure = ({
-  text = 'LANCOME ',
+  text = 'LANCÔME ',
   fontFamily = 'Gilroy',
   // This font is just an example, you should not use it in commercial projects.
   fontUrl = 'https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2',

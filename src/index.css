@@ -1,11 +1,90 @@
 @import "tailwindcss";
+/* 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
 
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
 
-head,body{
+head, body {
   font-family: 'Gilroy';
   scroll-behavior: smooth;
   /* overflow-x: hidden; */
 }
 
+::selection {
+  
+  background-color: #c9ade7; /* Lancôme purple */
+  color: white;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f5ff; /* Light purple background */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #c9ade7 0%, #b8917f 100%); /* Lancôme gradient */
+  border-radius: 10px;
+  border: 2px solid #f8f5ff;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #b89ad6 0%, #a58270 100%); /* Darker gradient on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c9ade7 #f8f5ff;
+}
+
+/* Smooth fade-in for scrollbar in Firefox */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Custom scrollbar for text areas */
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Animation for scrollbar thumb */
+@keyframes scrollbar-pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+::-webkit-scrollbar-thumb {
+  animation: scrollbar-pulse 3s ease infinite;
+}
+
+/* Hide scrollbar when not scrolling */
+html:not(:hover)::-webkit-scrollbar-thumb {
+  visibility: hidden;
+}
+
+html:not(:hover)::-webkit-scrollbar-track {
+  visibility: hidden;
+}
+/* head,body{
+  font-family: 'Gilroy';
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+::selection{
+  color: pink;
+}
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap'); */

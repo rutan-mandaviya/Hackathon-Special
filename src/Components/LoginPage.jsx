@@ -48,14 +48,14 @@ export default function LoginPage() {
         className="backdrop-blur-lg bg-white/70 shadow-xl max-w-md w-full rounded-xl p-8 mx-4"
       >
          <button onClick={()=>navigate(-1)} className=" absolute cursor-pointer top-10 left-10">
-      <IoMdArrowRoundBack className="text-3xl"></IoMdArrowRoundBack>
+      <IoMdArrowRoundBack className="text-4xl bg-green-50 "></IoMdArrowRoundBack>
 
      </button>
         <div className="flex flex-col items-center mb-6">
           <img 
             src="/logo.png" 
             alt="Lancôme Logo" 
-            className="h-28 w-48 object-contain mb-4"
+            className="h-28 md:h-48 w-48 object-contain "
             onError={(e) => {
               e.target.src = '/fallback-logo.png';
               e.target.className = "h-28 w-48 object-contain mb-4 grayscale";
