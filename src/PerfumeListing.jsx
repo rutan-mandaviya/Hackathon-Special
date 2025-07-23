@@ -116,7 +116,7 @@ export default function PerfumeListing() {
                 {p.name}
               </h2>
               <div className="flex flex-col md:flex-row justify-center items-center gap-3 mb-4">
-                <select className="bg-white/70 px-3 py-1 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-200">
+                <select className="bg-white/70 px-3 py-1 text-sm md:text-xl rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-200">
                   {p.sizes.map((s, i) => (
                     <option key={i} value={s.value}>{s.label}</option>
                   ))}

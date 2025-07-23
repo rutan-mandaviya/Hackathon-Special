@@ -39,7 +39,7 @@ const Context = (props) => {
   },
   {
     id: 2,
-    name: "Idôle L’Intense",
+    name: "La Vie Est Belle Eau De",
     images: ["/p9.png", "/p9h.png"],
     price: 69,
     sizes: [
@@ -70,7 +70,7 @@ const Context = (props) => {
   },
   {
     id: 3,
-    name: "Idôle Aura",
+    name: "Hypnose Eau De Parfum",
     images: ["/p5.png", "/p5h.png"],
     price: 69,
     sizes: [
@@ -101,7 +101,7 @@ const Context = (props) => {
   },
   {
     id: 4,
-    name: "Idôle Nectar",
+    name: "Miracle Eau De Parfum",
     images: ["/p4.png", "/p4h.png"],
     price: 69,
     sizes: [
@@ -132,7 +132,7 @@ const Context = (props) => {
   },
   {
     id: 5,
-    name: "Idôle Limited Edition",
+    name: "Idôle Eau de Parfum",
     images: ["/p1.png", "/p1h.png"],
     price: 69,
     sizes: [
@@ -163,7 +163,7 @@ const Context = (props) => {
   },
    {
     id: 6,
-    name: "Idôle Eau de Toilette",
+    name: "La Nuit Eau De Parfum",
     images: ["/p3.png", "/p3h.png"],
     price: 69,
     sizes: [
@@ -194,7 +194,7 @@ const Context = (props) => {
   },
   {
     id: 7,
-    name: "Idôle Eau de Toilette",
+    name: "Absoule Le Parfum",
     images: ["/p6.png", "/p6h.png"],
     price: 69,
     sizes: [
@@ -225,7 +225,7 @@ const Context = (props) => {
   },
   {
     id: 8,
-    name: "Idôle Edition Fleur",
+    name: "Tresor In Love",
     images: ["/p8.png", "/p8h.png"],
     price: 69,
     sizes: [
@@ -256,7 +256,7 @@ const Context = (props) => {
   },
   {
     id: 9,
-    name: "Idôle Eau Privée",
+    name: "Magie Noire Eau de Toilette",
     images: ["/p10.png", "/p10h.png"],
     price: 69,
     sizes: [
@@ -287,7 +287,7 @@ const Context = (props) => {
   },
   {
     id: 10,
-    name: "Idôle Collection Gift Set",
+    name: "Lancome POEME Perfume",
     images: ["/p11.png", "/p11h.png"],
     price: 69,
     sizes: [

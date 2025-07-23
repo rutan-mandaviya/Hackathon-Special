@@ -5,12 +5,10 @@ export default function Loader({ onComplete }) {
   const progressRef = useRef(0);
   const displayProgressRef = useRef(0);
   const loaderRef = useRef(null);
-  const petalsRef = useRef([]);
   const progressBarRef = useRef(null);
-  const animationRef = useRef(null);
   const progressTextRef = useRef(null);
+  const logoRef = useRef(null);
 
-  // Update progress display with animation
   const updateProgressDisplay = () => {
     if (displayProgressRef.current < progressRef.current) {
       displayProgressRef.current += 1;
@@ -21,95 +19,78 @@ export default function Loader({ onComplete }) {
   };
 
   useEffect(() => {
-    // Reset progress values
+    // Debugging: Check if image path is correct
+    console.log('Image path:', '/loaderimg.png'); // Verify this path in your console
+    
     progressRef.current = 0;
     displayProgressRef.current = 0;
-    
-    // Petal animation
-    const petalAnimation = gsap.to(petalsRef.current, {
-      rotation: 360,
-      duration: 12,
-      repeat: -1,
-      ease: "none"
+
+    // Logo animation
+    gsap.from(logoRef.current, {
+      scale: 0.8,
+      opacity: 0,
+      duration: 1.2,
+      ease: "elastic.out(1, 0.5)"
     });
 
-    // Main progress animation
-    animationRef.current = gsap.to(progressRef, {
+    // Progress animation
+    const tl = gsap.timeline();
+    tl.to(progressRef, {
       current: 100,
       duration: 3,
       ease: "power1.out",
-      onUpdate: () => {
-        // Update the visual progress display
-        requestAnimationFrame(updateProgressDisplay);
-      },
+      onUpdate: updateProgressDisplay,
       onComplete: () => {
-        // Ensure we reach exactly 100%
-        progressRef.current = 100;
-        updateProgressDisplay();
-        
-        // Fade out animation when complete
         gsap.to(loaderRef.current, {
           opacity: 0,
-          duration: 0.6,
+          duration: 0.8,
           onComplete: onComplete
         });
       }
     });
 
-    return () => {
-      // Clean up animations
-      petalAnimation.kill();
-      if (animationRef.current) animationRef.current.kill();
-    };
+    return () => tl.kill();
   }, [onComplete]);
 
   return (
     <div 
       ref={loaderRef}
-      className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-pink-50 to-indigo-50 z-[9999]"
+      className="fixed inset-0 flex flex-col items-center justify-center bg-white z-[9999]"
     >
-      {/* Perfume bottle silhouette - Responsive sizing */}
-      <div className="relative w-[80px] h-[120px] sm:w-32 sm:h-48 mb-6 sm:mb-8">
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-12 h-32 sm:w-16 sm:h-40 bg-gradient-to-t from-pink-300 to-pink-500 rounded-lg shadow-lg"></div>
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-6 sm:w-8 sm:h-8 bg-pink-400 rounded-full"></div>
-        
-        {/* Floating petals */}
-        {[...Array(5)].map((_, i) => (
-          <div 
-            key={i}
-            ref={el => petalsRef.current[i] = el}
-            className="absolute w-3 h-3 sm:w-4 sm:h-4 bg-pink-200 rounded-full opacity-80"
-            style={{
-              top: `${Math.random() * 30 + 10}%`,
-              left: `${Math.random() * 60 + 20}%`,
-              transform: `rotate(${Math.random() * 360}deg)`
-            }}
-          ></div>
-        ))}
+      {/* Logo Container with Debugging */}
+      <div className="relative mb-8">
+        <img
+          ref={logoRef}
+          src="/loaderimg.png" 
+          alt="Lancôme Logo"
+          className="w-42 h-32 object-contain"
+          onError={(e) => {
+            console.error('Image failed to load', e);
+            e.target.style.border = '2px solid red'; // Visual debug
+          }}
+        />
       </div>
 
-      {/* Progress bar - Responsive sizing */}
-      <div className="w-[200px] sm:w-64 h-1.5 sm:h-2 bg-gray-200 rounded-full overflow-hidden mb-4 sm:mb-6 mx-4">
+      {/* Progress Percentage */}
+      <div 
+        ref={progressTextRef}
+        className="text-4xl font-thin text-pink-600 mb-4"
+      >
+        0%
+      </div>
+
+      {/* Progress Bar */}
+      <div className="w-48 h-0.5 bg-gray-100 overflow-hidden mb-12">
         <div 
           ref={progressBarRef}
-          className="h-full bg-gradient-to-r from-pink-400 to-indigo-500"
+          className="h-full bg-gradient-to-r from-pink-400 to-pink-600"
           style={{ width: '0%' }}
-        ></div>
+        />
       </div>
 
-      {/* Percentage text - Responsive sizing */}
-      <div className="relative">
-        <span 
-          ref={progressTextRef}
-          className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-600"
-        >
-          0%
-        </span>
-      </div>
-
-      {/* Brand logo - Responsive positioning */}
-      <div className="absolute bottom-4 sm:bottom-8 text-xs text-gray-400">
-        Lancôme Paris
+      {/* Brand Text */}
+      <div className="text-xs tracking-widest text-gray-400">
+        LANCÔME • PARIS
       </div>
     </div>
   );

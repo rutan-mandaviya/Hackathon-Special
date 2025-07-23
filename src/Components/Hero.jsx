@@ -25,7 +25,7 @@ const Hero = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full min-h-[40vh] md:h-full my-4 md:my-14 flex items-center justify-center px-4 md:px-8">
+      <section className="relative  min:h-0 w-full md:min-h-[40vh] md:h-full my-14 md:my-14 flex items-center justify-center px-4 md:px-8">
         <TextPressure />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img

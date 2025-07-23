@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from '@studio-freight/lenis';
@@ -17,8 +16,10 @@ const Loader = React.lazy(() => import('./Components/Loader'));
 function App() {
   const location = useLocation();
   const lenisRef = useRef(null);
-
   const [isLoading, setIsLoading] = useState(true);
+
+  // Check if current route is login page
+  const isLoginPage = location.pathname === '/login';
 
   // ✅ Smooth scroll initialization (Lenis)
   useEffect(() => {
@@ -58,7 +59,8 @@ function App() {
   return (
     <div className="w-full bg-gradient-to-br from-blue-50 via-pink-50 to-blue-50 min-h-screen">
       <Suspense fallback={<div className="fixed inset-0 bg-white z-50" />}>
-        {!isLoading && <Nav />}
+        {/* Conditionally render Nav based on route */}
+        {!isLoading && !isLoginPage && <Nav />}
 
         <Routes location={location} key={location.pathname}>
           <Route
